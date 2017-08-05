@@ -47,7 +47,7 @@ public class Filme {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
+    }	
 
     public Duration getDuracao() {
         return duracao;
