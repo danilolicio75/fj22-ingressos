@@ -1,6 +1,7 @@
 package br.com.caelum.ingresso.model;
 
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -62,8 +63,11 @@ public class Sessao {
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
-		
+		this.id = id;	
+	}
+	
+	public LocalTime getHorarioTermino() {
+		return this.horario.plus(filme.getDuracao().toMinutes(), ChronoUnit.MINUTES);
 	}
 
 }
