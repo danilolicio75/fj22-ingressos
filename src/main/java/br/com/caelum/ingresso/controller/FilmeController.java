@@ -1,6 +1,7 @@
 package br.com.caelum.ingresso.controller;
 
 import br.com.caelum.ingresso.dao.FilmeDao;
+import br.com.caelum.ingresso.dao.SessaoDao;
 import br.com.caelum.ingresso.model.Filme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,26 @@ public class FilmeController {
     @Autowired
     private FilmeDao filmeDao;
 
+    @GetMapping("/filme/em-cartaz")
+    public ModelAndView emCartaz() {
+    	ModelAndView modelAndView = new ModelAndView("/filme/em-cartaz");
+
+    	modelAndView.addObject("filmes",filmeDao.findAll());
+    	
+    	return modelAndView;
+    }
+    
+    
+    @GetMapping("/filme/{id}/detalhe")
+    public ModelAndView detalhes(@PathVariable("id") Integer id) {
+    	ModelAndView modelAndView = new ModelAndView("/filme/detalhe");
+    	Filme filme = filmeDao.findOne(id);
+    	List<Sessao> sessoes = SessaoDao.buscaSessoesDoFilme(filme);
+    	
+    	modelAndView.addAllObjects("sessoes",sessoes);
+    	
+    	return modelAndView;
+    }
 
     @GetMapping({"/admin/filme", "/admin/filme/{id}"})
     public ModelAndView form(@PathVariable("id") Optional<Integer> id, Filme filme){
