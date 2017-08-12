@@ -94,6 +94,14 @@ public class Sessao {
 		return this.horario.plus(filme.getDuracao().toMinutes(), ChronoUnit.MINUTES);
 	}
 	
+	public Set<Ingresso> getIngressos() {
+		return ingressos;
+	}
+
+	public void setIngressos(Set<Ingresso> ingressos) {
+		this.ingressos = ingressos;
+	}
+
 	public Map<String,List<Lugar>> getMapaDeLugares() {
 		return sala.getMapaDeLugares();	
 	}

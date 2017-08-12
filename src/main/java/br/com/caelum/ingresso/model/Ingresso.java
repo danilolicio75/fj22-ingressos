@@ -65,4 +65,13 @@ public class Ingresso {
 		this.preco = preco;
 	}
 
+	public TipoDeIngresso getTipoDeIngresso() {
+		return tipoDeIngresso;
+	}
+
+	public void setTipoDeIngresso(TipoDeIngresso tipoDeIngresso) {
+		this.tipoDeIngresso = tipoDeIngresso;
+	}
+
+
 }
